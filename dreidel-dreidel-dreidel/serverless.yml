@@ -6,7 +6,7 @@ service: dreidel-dreidel-dreidel
 
 provider:
   name: azure
-  region: East US 
+  region: East US
   runtime: nodejs10.x
   # prefix: "sample"  # prefix of generated resource name
   # subscriptionId: A356AC8C-E310-44F4-BF85-C7F29044AF99
@@ -58,7 +58,7 @@ package:
     - .vscode/**
 
 functions:
-  hello:
+  spin:
     handler: src/handlers/index.spin
     events:
       - http: true
