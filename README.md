@@ -1,7 +1,7 @@
 # 25 Days of Serverless
 
-## Day 1
-  - [Driedel, driedel, driedel](https://github.com/lynnaloo/25-days-of-serverless-solutions/tree/master/dreidel-dreidel-dreidel)
+
+- Day 1: [Driedel, driedel, driedel](https://github.com/lynnaloo/25-days-of-serverless-solutions/tree/master/dreidel-dreidel-dreidel)
 
 ### Using Serverless Framework:
 
