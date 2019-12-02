@@ -1,7 +1,7 @@
 module.exports = {
   'env': {
       'es6': true,
-      'node': true 
+      'node': true
   },
   'extends': 'plugin:shopify/esnext',
   'rules': {
@@ -11,10 +11,11 @@ module.exports = {
           avoidEscape: true,
           allowTemplateLiterals: true
       }],
-      'no-unused-vars': ["error", { 
-          vars: 'local', 
-          args: 'none' 
+      'no-unused-vars': ["error", {
+          vars: 'local',
+          args: 'none'
       }],
-      'no-process-env': 0
+      'no-process-env': 0,
+      'require-await': 'off'
   }
 };
