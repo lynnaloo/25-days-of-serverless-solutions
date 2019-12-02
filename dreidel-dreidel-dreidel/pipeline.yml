@@ -1,0 +1,42 @@
+trigger:
+- master
+
+pr:
+- master
+- releases/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+
+- script: |
+    npm install -g serverless
+    npm install
+  displayName: 'Install Serverless Framework'
+
+- script: |
+    npm run lint
+  displayName: 'Run lint on all code'
+
+- script: |
+    npm install
+    npm test
+  workingDirectory: $(Build.SourcesDirectory)/dreidel-dreidel-driedel
+  displayName: 'Install local libraries and test code'
+
+- script: |
+    sls deploy --stage dev --region "East US"
+  workingDirectory: $(Build.SourcesDirectory)/dreidel-dreidel-driedel
+  env:
+    # Azure Service Principal
+    # Values stored as secret variables
+    AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
+    AZURE_TENANT_ID: $(AZURE_TENANT_ID)
+    AZURE_CLIENT_ID: $(AZURE_CLIENT_ID)
+    AZURE_CLIENT_SECRET: $(AZURE_CLIENT_SECRET)
+  #condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+  displayName: 'Deploy Azure Function App '
