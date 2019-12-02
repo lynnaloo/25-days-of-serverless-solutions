@@ -1,0 +1,18 @@
+{
+  "name": "dreidel-dreidel-dreidel",
+  "version": "1.0.0",
+  "description": "Azure Functions Dreidel Spinner",
+  "scripts": {
+    "test": "echo \"No tests yet...\"",
+    "start": "func host start"
+  },
+  "keywords": [
+    "azure",
+    "serverless",
+    "25daysofserverless"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-azure-functions": "^1.0.0"
+  }
+}
