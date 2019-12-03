@@ -8,7 +8,7 @@
       }
   },
   "triggers": {
-      "Recurrence": {
+      "Run_once_a_year": {
           "recurrence": {
               "frequency": "Month",
               "interval": 12,
@@ -126,7 +126,7 @@
           "type": "ApiConnection",
           "inputs": {
               "body": {
-                  "body": "\"Lucy, deliver the coffee to Mom and Dad\"",
+                  "body": "Lucy, now deliver the coffee cups to Mom and Dad.",
                   "from": "+12282077257",
                   "to": "~redacted~"
               },
@@ -148,7 +148,7 @@
           "type": "ApiConnection",
           "inputs": {
               "body": {
-                  "body": "\"Lucy, deliver the coffee to your sister and brother\"",
+                  "body": "Lucy, now please deliver the coffees to your sister and brother",
                   "from": "+12282077257",
                   "to": "~redacted~"
               },
@@ -170,7 +170,7 @@
           "type": "ApiConnection",
           "inputs": {
               "body": {
-                  "body": "\"Lucy, return to the kitchen and fill two more cups\"",
+                  "body": "Lucy, now return to the kitchen and fill two more cups.",
                   "from": "+12282077257",
                   "to": "~redacted~"
               },
@@ -192,7 +192,7 @@
           "type": "ApiConnection",
           "inputs": {
               "body": {
-                  "body": "\"Lucy, light the candles!\"",
+                  "body": "Lucy, please light the candles!",
                   "from": "+12282077257",
                   "to": "~redacted~"
               },
@@ -214,7 +214,7 @@
           "type": "ApiConnection",
           "inputs": {
               "body": {
-                  "body": "\"Lucy, pour two cups\"",
+                  "body": "Lucy, please pour two cups of coffee.",
                   "from": "+12282077257",
                   "to": "~redacted~"
               },
@@ -236,7 +236,7 @@
           "type": "ApiConnection",
           "inputs": {
               "body": {
-                  "body": "\"Lucy, relight the candles\"",
+                  "body": "Lucy, please relight the candles!",
                   "from": "+12282077257",
                   "to": "~redacted~"
               },
@@ -254,7 +254,7 @@
           "type": "ApiConnection",
           "inputs": {
               "body": {
-                  "body": "\"Lucy, start the coffee and set out 4 cups.\"",
+                  "body": "Lucy, please start the coffee and set out 4 cups for Mom, Dad, your brother, and your sister.",
                   "from": "+12282077257",
                   "to": "~redacted~"
               },
@@ -276,7 +276,7 @@
           "type": "ApiConnection",
           "inputs": {
               "body": {
-                  "body": "\"Lucy, return to kitchen and take a break!\"",
+                  "body": "Lucy, please return to kitchen and take a break. You deserve it!",
                   "from": "+12282077257",
                   "to": "~redacted~"
               },
