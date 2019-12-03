@@ -5,6 +5,14 @@
       "$connections": {
           "defaultValue": {},
           "type": "Object"
+      },
+      "fromPhoneNumber": {
+          "defaultValue": "+12282077257",
+          "type": "String"
+      },
+      "toPhoneNumber": {
+          "defaultValue": "[redacted]",
+          "type": "String"
       }
   },
   "triggers": {
@@ -126,9 +134,9 @@
           "type": "ApiConnection",
           "inputs": {
               "body": {
-                  "body": "Lucy, now deliver the coffee cups to Mom and Dad.",
-                  "from": "+12282077257",
-                  "to": "~redacted~"
+                  "body": "Lucy, now deliver the coffee cups to your Mom and Dad.",
+                  "from": "@parameters('fromPhoneNumber')",
+                  "to": "@parameters('toPhoneNumber')"
               },
               "host": {
                   "connection": {
@@ -149,8 +157,8 @@
           "inputs": {
               "body": {
                   "body": "Lucy, now please deliver the coffees to your sister and brother",
-                  "from": "+12282077257",
-                  "to": "~redacted~"
+                  "from": "@parameters('fromPhoneNumber')",
+                  "to": "@parameters('toPhoneNumber')"
               },
               "host": {
                   "connection": {
@@ -171,8 +179,8 @@
           "inputs": {
               "body": {
                   "body": "Lucy, now return to the kitchen and fill two more cups.",
-                  "from": "+12282077257",
-                  "to": "~redacted~"
+                  "from": "@parameters('fromPhoneNumber')",
+                  "to": "@parameters('toPhoneNumber')"
               },
               "host": {
                   "connection": {
@@ -193,8 +201,8 @@
           "inputs": {
               "body": {
                   "body": "Lucy, please light the candles!",
-                  "from": "+12282077257",
-                  "to": "~redacted~"
+                  "from": "@parameters('fromPhoneNumber')",
+                  "to": "@parameters('toPhoneNumber')"
               },
               "host": {
                   "connection": {
@@ -215,8 +223,8 @@
           "inputs": {
               "body": {
                   "body": "Lucy, please pour two cups of coffee.",
-                  "from": "+12282077257",
-                  "to": "~redacted~"
+                  "from": "@parameters('fromPhoneNumber')",
+                  "to": "@parameters('toPhoneNumber')"
               },
               "host": {
                   "connection": {
@@ -237,8 +245,8 @@
           "inputs": {
               "body": {
                   "body": "Lucy, please relight the candles!",
-                  "from": "+12282077257",
-                  "to": "~redacted~"
+                  "from": "@parameters('fromPhoneNumber')",
+                  "to": "@parameters('toPhoneNumber')"
               },
               "host": {
                   "connection": {
@@ -255,8 +263,8 @@
           "inputs": {
               "body": {
                   "body": "Lucy, please start the coffee and set out 4 cups for Mom, Dad, your brother, and your sister.",
-                  "from": "+12282077257",
-                  "to": "~redacted~"
+                  "from": "@parameters('fromPhoneNumber')",
+                  "to": "@parameters('toPhoneNumber')"
               },
               "host": {
                   "connection": {
@@ -277,8 +285,8 @@
           "inputs": {
               "body": {
                   "body": "Lucy, please return to kitchen and take a break. You deserve it!",
-                  "from": "+12282077257",
-                  "to": "~redacted~"
+                  "from": "@parameters('fromPhoneNumber')",
+                  "to": "@parameters('toPhoneNumber')"
               },
               "host": {
                   "connection": {
