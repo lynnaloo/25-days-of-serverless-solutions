@@ -1,0 +1,294 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+      }
+  },
+  "triggers": {
+      "Recurrence": {
+          "recurrence": {
+              "frequency": "Month",
+              "interval": 12,
+              "startTime": "2019-12-13T08:00:00Z",
+              "timeZone": "W. Europe Standard Time"
+          },
+          "type": "Recurrence"
+      }
+  },
+  "actions": {
+      "Delay_1_minute": {
+          "runAfter": {
+              "Fill_two_more_cups": [
+                  "Succeeded"
+              ]
+          },
+          "type": "Wait",
+          "inputs": {
+              "interval": {
+                  "count": 1,
+                  "unit": "Minute"
+              }
+          }
+      },
+      "Delay_25_minutes": {
+          "runAfter": {
+              "Start_the_coffee_Text": [
+                  "Succeeded"
+              ]
+          },
+          "type": "Wait",
+          "inputs": {
+              "interval": {
+                  "count": 25,
+                  "unit": "Minute"
+              }
+          }
+      },
+      "Delay_4_minutes": {
+          "runAfter": {
+              "Deliver_coffee_to_Mom_and_Dad": [
+                  "Succeeded"
+              ]
+          },
+          "type": "Wait",
+          "inputs": {
+              "interval": {
+                  "count": 4,
+                  "unit": "Minute"
+              }
+          }
+      },
+      "Delay_4_more_minutes": {
+          "runAfter": {
+              "Deliver_the_coffee_to_Sister_and_Brother": [
+                  "Succeeded"
+              ]
+          },
+          "type": "Wait",
+          "inputs": {
+              "interval": {
+                  "count": 4,
+                  "unit": "Minute"
+              }
+          }
+      },
+      "Delay_5_minutes": {
+          "runAfter": {
+              "Pour_two_cups_Text": [
+                  "Succeeded"
+              ]
+          },
+          "type": "Wait",
+          "inputs": {
+              "interval": {
+                  "count": 5,
+                  "unit": "Minute"
+              }
+          }
+      },
+      "Delay_5_minutes_again": {
+          "runAfter": {
+              "Relight_the_candles": [
+                  "Succeeded"
+              ]
+          },
+          "type": "Wait",
+          "inputs": {
+              "interval": {
+                  "count": 5,
+                  "unit": "Minute"
+              }
+          }
+      },
+      "Delay_5_more_minutes": {
+          "runAfter": {
+              "Light_the_candles": [
+                  "Succeeded"
+              ]
+          },
+          "type": "Wait",
+          "inputs": {
+              "interval": {
+                  "count": 5,
+                  "unit": "Minute"
+              }
+          }
+      },
+      "Deliver_coffee_to_Mom_and_Dad": {
+          "runAfter": {
+              "Delay_5_more_minutes": [
+                  "Succeeded"
+              ]
+          },
+          "type": "ApiConnection",
+          "inputs": {
+              "body": {
+                  "body": "\"Lucy, deliver the coffee to Mom and Dad\"",
+                  "from": "+12282077257",
+                  "to": "~redacted~"
+              },
+              "host": {
+                  "connection": {
+                      "name": "@parameters('$connections')['twilio']['connectionId']"
+                  }
+              },
+              "method": "post",
+              "path": "/Messages.json"
+          }
+      },
+      "Deliver_the_coffee_to_Sister_and_Brother": {
+          "runAfter": {
+              "Delay_5_minutes_again": [
+                  "Succeeded"
+              ]
+          },
+          "type": "ApiConnection",
+          "inputs": {
+              "body": {
+                  "body": "\"Lucy, deliver the coffee to your sister and srother\"",
+                  "from": "+12282077257",
+                  "to": "~redacted~"
+              },
+              "host": {
+                  "connection": {
+                      "name": "@parameters('$connections')['twilio']['connectionId']"
+                  }
+              },
+              "method": "post",
+              "path": "/Messages.json"
+          }
+      },
+      "Fill_two_more_cups": {
+          "runAfter": {
+              "Delay_4_minutes": [
+                  "Succeeded"
+              ]
+          },
+          "type": "ApiConnection",
+          "inputs": {
+              "body": {
+                  "body": "\"Lucy, return to the kitchen and fill two more cups\"",
+                  "from": "+12282077257",
+                  "to": "~redacted~"
+              },
+              "host": {
+                  "connection": {
+                      "name": "@parameters('$connections')['twilio']['connectionId']"
+                  }
+              },
+              "method": "post",
+              "path": "/Messages.json"
+          }
+      },
+      "Light_the_candles": {
+          "runAfter": {
+              "Delay_5_minutes": [
+                  "Succeeded"
+              ]
+          },
+          "type": "ApiConnection",
+          "inputs": {
+              "body": {
+                  "body": "\"Lucy, light the candles!\"",
+                  "from": "+12282077257",
+                  "to": "~redacted~"
+              },
+              "host": {
+                  "connection": {
+                      "name": "@parameters('$connections')['twilio']['connectionId']"
+                  }
+              },
+              "method": "post",
+              "path": "/Messages.json"
+          }
+      },
+      "Pour_two_cups_Text": {
+          "runAfter": {
+              "Delay_25_minutes": [
+                  "Succeeded"
+              ]
+          },
+          "type": "ApiConnection",
+          "inputs": {
+              "body": {
+                  "body": "\"Lucy, pour two cups\"",
+                  "from": "+12282077257",
+                  "to": "~redacted~"
+              },
+              "host": {
+                  "connection": {
+                      "name": "@parameters('$connections')['twilio']['connectionId']"
+                  }
+              },
+              "method": "post",
+              "path": "/Messages.json"
+          }
+      },
+      "Relight_the_candles": {
+          "runAfter": {
+              "Delay_1_minute": [
+                  "Succeeded"
+              ]
+          },
+          "type": "ApiConnection",
+          "inputs": {
+              "body": {
+                  "body": "\"Lucy, relight the candles\"",
+                  "from": "+12282077257",
+                  "to": "~redacted~"
+              },
+              "host": {
+                  "connection": {
+                      "name": "@parameters('$connections')['twilio']['connectionId']"
+                  }
+              },
+              "method": "post",
+              "path": "/Messages.json"
+          }
+      },
+      "Start_the_coffee_Text": {
+          "runAfter": {},
+          "type": "ApiConnection",
+          "inputs": {
+              "body": {
+                  "body": "\"Lucy, start the coffee and set out 4 cups.\"",
+                  "from": "+12282077257",
+                  "to": "~redacted~"
+              },
+              "host": {
+                  "connection": {
+                      "name": "@parameters('$connections')['twilio']['connectionId']"
+                  }
+              },
+              "method": "post",
+              "path": "/Messages.json"
+          }
+      },
+      "Take_a_break": {
+          "runAfter": {
+              "Delay_4_more_minutes": [
+                  "Succeeded"
+              ]
+          },
+          "type": "ApiConnection",
+          "inputs": {
+              "body": {
+                  "body": "\"Lucy, return to kitchen and take a break!\"",
+                  "from": "+12282077257",
+                  "to": "~redacted~"
+              },
+              "host": {
+                  "connection": {
+                      "name": "@parameters('$connections')['twilio']['connectionId']"
+                  }
+              },
+              "method": "post",
+              "path": "/Messages.json"
+          }
+      }
+  },
+  "outputs": {}
+}
