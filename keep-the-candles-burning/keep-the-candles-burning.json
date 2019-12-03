@@ -148,7 +148,7 @@
           "type": "ApiConnection",
           "inputs": {
               "body": {
-                  "body": "\"Lucy, deliver the coffee to your sister and srother\"",
+                  "body": "\"Lucy, deliver the coffee to your sister and brother\"",
                   "from": "+12282077257",
                   "to": "~redacted~"
               },
