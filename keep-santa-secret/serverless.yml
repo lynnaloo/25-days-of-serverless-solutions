@@ -1,0 +1,76 @@
+service: keep-santa-secret
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: azure
+  region: East US
+  runtime: nodejs10.x
+  # prefix: "sample"  # prefix of generated resource name
+  # subscriptionId: A356AC8C-E310-44F4-BF85-C7F29044AF99
+  stage: dev
+  # type: premium  # premium azure functions
+
+  environment: # these will be created as application settings
+    #VARIABLE_FOO: 'foo'
+
+  # you can define apim configuration here
+  # apim:
+  #   apis:
+  #     - name: v1
+  #       subscriptionRequired: false # if true must provide an api key
+  #       displayName: v1
+  #       description: V1 sample app APIs
+  #       protocols:
+  #         - https
+  #       path: v1
+  #       tags:
+  #         - tag1
+  #         - tag2
+  #       authorization: none
+  #   cors:
+  #     allowCredentials: false
+  #     allowedOrigins:
+  #       - "*"
+  #     allowedMethods:
+  #       - GET
+  #       - POST
+  #       - PUT
+  #       - DELETE
+  #       - PATCH
+  #     allowedHeaders:
+  #       - "*"
+  #     exposeHeaders:
+  #       - "*"
+
+plugins: # look for additional plugins in the community plugins repo: https://github.com/serverless/plugins
+  - serverless-azure-functions
+
+# you can add packaging information here
+package:
+  # include:
+  #   - include-me.js
+  #   - include-me-dir/**
+  exclude:
+    - local.settings.json
+    - .vscode/**
+
+functions:
+  save:
+    handler: src/handlers/index.saveGift
+    events:
+      - http: true
+        x-azure-settings:
+          methods:
+            - POST
+          authLevel: anonymous
+      - cosmosDB:
+        x-azure-settings:
+          direction: out
+          name: record # name of input parameter in function signature
+          databaseName: gift-store
+          collectionName: giftCollection
+          connectionStringSetting: COSMOS_DB_CONNECTION # name of appsetting with the connection string
+          createIfNotExists: true # A boolean value to indicate whether the collection is created when it doesn't exist.
