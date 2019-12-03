@@ -6,15 +6,14 @@ module.exports.saveGift = async function(context, req) {
 
   if (req.body) {
     const input = req.body;
-
     const timestamp = Date.now();
 
     const output = JSON.stringify({
       url: input.url,
       timestamp
     });
-    // context.bindings.record = output;
-    // context.log('Finish writing to CosmosDB');
+    context.bindings.record = output;
+    context.log('Finish writing to CosmosDB');
 
     context.res = {
       // status: 200, /* Defaults to 200 */

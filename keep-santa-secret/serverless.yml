@@ -66,11 +66,11 @@ functions:
           methods:
             - POST
           authLevel: anonymous
-      # - cosmosDB:
-      #   x-azure-settings:
-      #     direction: out
-      #     name: record # name of input parameter in function signature
-      #     databaseName: gift-store
-      #     collectionName: giftCollection
-      #     connectionStringSetting: COSMOS_DB_CONNECTION # name of appsetting with the connection string
-      #     createIfNotExists: true # A boolean value to indicate whether the collection is created when it doesn't exist.
+      - cosmosDB:
+        x-azure-settings:
+          direction: out
+          name: record # name of input parameter in function signature
+          databaseName: gift-store
+          collectionName: giftCollection
+          connectionStringSetting: COSMOS_DB_CONNECTION # name of appsetting with the connection string
+          createIfNotExists: true # A boolean value to indicate whether the collection is created when it doesn't exist.
