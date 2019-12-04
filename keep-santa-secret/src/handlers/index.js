@@ -26,7 +26,7 @@ module.exports.saveGift = async function(context, req) {
       }
     });
 
-    context.bindings.outputTable = fileList;
+    context.bindings.record = fileList;
     context.res = {
       // status: 200, /* Defaults to 200 */
       body: `Commits analyzed ${fileList.toString()}`
