@@ -1,28 +1,40 @@
+/* eslint-disable shopify/prefer-early-return */
 
 module.exports.saveGift = async function(context, req) {
-  context.log('Saving URL to database');
+  context.log('Github hook was initiated');
+  const fileList = [];
 
-  context.log('JavaScript HTTP trigger function processed a request.');
-
-  if (req.body) {
-    const input = req.body;
+  if (req.body && req.body.commits && req.body.commits.length > 0) {
+    const commits = req.body.commits;
     const timestamp = Date.now();
 
-    const output = JSON.stringify({
-      url: input.url,
-      timestamp
-    });
-    context.bindings.record = output;
-    context.log('Finish writing to CosmosDB');
+    commits.forEach((commit) => {
+      if ((commit.added && commit.added.length > 0) || (commit.modified && commit.modified.length > 0)) {
+        const files = [];
+        files.push(commit.added);
+        files.push(commit.modified);
 
+        files.forEach((file) => {
+          if (file.endsWith('.png')) {
+            const output = JSON.stringify({
+              file,
+              timestamp
+            });
+            fileList.push(output);
+          }
+        });
+      }
+    });
+
+    context.bindings.outputTable = fileList;
     context.res = {
       // status: 200, /* Defaults to 200 */
-      body: output
-    };
-  } else {
-    context.res = {
-      status: 400,
-      body: 'Please pass a name on the query string or in the request body'
+      body: `Commits analyzed ${fileList.toString()}`
     };
   }
+
+  context.res = {
+    status: 400,
+    body: 'There were no commits to analyze.'
+  };
 };
