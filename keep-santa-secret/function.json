@@ -14,6 +14,15 @@
           "type": "http",
           "direction": "out",
           "name": "res"
+      },
+      {
+        "type": "cosmosDB",
+        "direction": "out",
+        "name": "record" ,
+        "databaseName": "gift-store",
+        "collectionName": "giftCollection",
+        "connectionStringSetting": "COSMOS_DB_CONNECTION",
+        "createIfNotExists": true
       }
   ]
 }
